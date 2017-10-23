@@ -7,6 +7,7 @@ package Paneles;
 
 import Controladores.GeneradorBasico;
 import Controladores.PruebaPromedios;
+import Controladores.PruebaVarianza;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,8 +19,11 @@ public class PanelGeneradorBasico extends javax.swing.JInternalFrame {
     /**
      * Creates new form PanelGeneradorBasico
      */
-    public PanelGeneradorBasico() {
+    private int prueba;
+    
+    public PanelGeneradorBasico(int prueba) {
         initComponents();
+        this.prueba = prueba;
     }
 
     /**
@@ -128,15 +132,27 @@ public class PanelGeneradorBasico extends javax.swing.JInternalFrame {
 
     private void jButtonEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEvaluarActionPerformed
         if (revisarCampos()) {
-            GeneradorBasico GB = new GeneradorBasico(Integer.parseInt(jTextFieldLimite.getText()));
-            GB.setEcuacionSalida(jTextFieldFuncionSalida.getText());
-            GB.setEcuacionTransicion(jTextFieldFuncionTransicion.getText());
-            GB.controlGeneradorBasico(Integer.parseInt(jTextFieldSemilla.getText()));
-            PruebaPromedios PP = new PruebaPromedios();
-            PP.controlPrueba(GB.getFuncionSalida());
+            switch (prueba) {
+                case 1:
+                    GeneradorBasico GB = new GeneradorBasico(Integer.parseInt(jTextFieldLimite.getText()));
+                    GB.setEcuacionSalida(jTextFieldFuncionSalida.getText());
+                    GB.setEcuacionTransicion(jTextFieldFuncionTransicion.getText());
+                    GB.controlGeneradorBasico(Integer.parseInt(jTextFieldSemilla.getText()));
+                    PruebaPromedios PP = new PruebaPromedios();
+                    PP.controlPrueba(GB.getFuncionSalida());
+                    break;
+                case 2:
+                    GB = new GeneradorBasico(Integer.parseInt(jTextFieldLimite.getText()));
+                    GB.setEcuacionSalida(jTextFieldFuncionSalida.getText());
+                    GB.setEcuacionTransicion(jTextFieldFuncionTransicion.getText());
+                    GB.controlGeneradorBasico(Integer.parseInt(jTextFieldSemilla.getText()));
+                    PruebaVarianza PV = new PruebaVarianza();
+                    PV.controlVarianza(GB.getFuncionSalida());
+                    break;
+            }
         }
     }//GEN-LAST:event_jButtonEvaluarActionPerformed
-
+    
     private boolean revisarCampos() {
         String cadena = "Por favor ingrese un dato en los siguientes campos:\n\n";
         int contador = 1;

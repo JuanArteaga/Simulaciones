@@ -56,6 +56,9 @@ public class MidSquareVista extends javax.swing.JFrame {
         jMenuItemLEcuyer = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemArea = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemVarianza = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -220,6 +223,26 @@ public class MidSquareVista extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setText("Pruebas");
+
+        jMenuItem1.setText("Promedios");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
+
+        jMenuItemVarianza.setText("Varianza");
+        jMenuItemVarianza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemVarianzaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItemVarianza);
+
+        jMenuBar1.add(jMenu4);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -317,6 +340,18 @@ public class MidSquareVista extends javax.swing.JFrame {
         this.setVisible(false);
         GLE.setVisible(true);
     }//GEN-LAST:event_jMenuItemLEcuyerActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        PruebaMediasVista PMV=new PruebaMediasVista();
+        this.setVisible(false);
+        PMV.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItemVarianzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVarianzaActionPerformed
+        PruebaVarianzaVista PV=new PruebaVarianzaVista();
+        this.setVisible(false);
+        PV.setVisible(true);
+    }//GEN-LAST:event_jMenuItemVarianzaActionPerformed
     
     private boolean revisarCampos() {
         String cadena = "Por favor ingrese un dato en los siguientes campos:\n\n";
@@ -380,14 +415,17 @@ public class MidSquareVista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuInicio;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemArea;
     private javax.swing.JMenuItem jMenuItemFibonacci;
     private javax.swing.JMenuItem jMenuItemGeneradorBasico;
     private javax.swing.JMenuItem jMenuItemLEcuyer;
     private javax.swing.JMenuItem jMenuItemLineales;
     private javax.swing.JMenuItem jMenuItemMidSquare;
+    private javax.swing.JMenuItem jMenuItemVarianza;
     private javax.swing.JMenuItem jMenuItemWichmannHill;
     private javax.swing.JMenuItem jMenuSalir;
     private javax.swing.JPanel jPanel1;

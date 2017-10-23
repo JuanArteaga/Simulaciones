@@ -6,6 +6,7 @@
 package Paneles;
 
 import Controladores.PruebaPromedios;
+import Controladores.PruebaVarianza;
 import Controladores.WichmannHill;
 import javax.swing.JOptionPane;
 
@@ -18,8 +19,11 @@ public class PanelGeneradorWichmannHill extends javax.swing.JInternalFrame {
     /**
      * Creates new form PanelGeneradorWichmannHill2
      */
-    public PanelGeneradorWichmannHill() {
+    private int prueba;
+
+    public PanelGeneradorWichmannHill(int prueba) {
         initComponents();
+        this.prueba = prueba;
     }
 
     /**
@@ -137,17 +141,31 @@ public class PanelGeneradorWichmannHill extends javax.swing.JInternalFrame {
 
     private void jButtonEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEvaluarActionPerformed
         if (revisarCampos()) {
-            int semillaX = Integer.parseInt(jTextFieldValorX.getText());
-            int semillaY = Integer.parseInt(jTextFieldValorY.getText());
-            int semillaZ = Integer.parseInt(jTextFieldValorZ.getText());
-            int limite = Integer.parseInt(jTextFieldLimite.getText());
-            WichmannHill WH = new WichmannHill(semillaX, semillaY, semillaZ, limite);
-            WH.Control();
-            PruebaPromedios PP = new PruebaPromedios();
-            PP.controlPrueba(WH.getResultados());
+            switch (prueba) {
+                case 1:
+                    int semillaX = Integer.parseInt(jTextFieldValorX.getText());
+                    int semillaY = Integer.parseInt(jTextFieldValorY.getText());
+                    int semillaZ = Integer.parseInt(jTextFieldValorZ.getText());
+                    int limite = Integer.parseInt(jTextFieldLimite.getText());
+                    WichmannHill WH = new WichmannHill(semillaX, semillaY, semillaZ, limite);
+                    WH.Control();
+                    PruebaPromedios PP = new PruebaPromedios();
+                    PP.controlPrueba(WH.getResultados());
+                    break;
+                case 2:
+                    semillaX = Integer.parseInt(jTextFieldValorX.getText());
+                    semillaY = Integer.parseInt(jTextFieldValorY.getText());
+                    semillaZ = Integer.parseInt(jTextFieldValorZ.getText());
+                    limite = Integer.parseInt(jTextFieldLimite.getText());
+                    WH = new WichmannHill(semillaX, semillaY, semillaZ, limite);
+                    WH.Control();
+                    PruebaVarianza PV = new PruebaVarianza();
+                    PV.controlVarianza(WH.getResultados());
+                    break;
+            }
         }
     }//GEN-LAST:event_jButtonEvaluarActionPerformed
-    
+
     private boolean revisarCampos() {
         String cadena = "Por favor ingrese un dato en los siguientes campos:\n\n";
         int contador = 1;

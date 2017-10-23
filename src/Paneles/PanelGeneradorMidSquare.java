@@ -7,6 +7,7 @@ package Paneles;
 
 import Controladores.MidSquare;
 import Controladores.PruebaPromedios;
+import Controladores.PruebaVarianza;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,12 +17,14 @@ import javax.swing.JOptionPane;
 public class PanelGeneradorMidSquare extends javax.swing.JInternalFrame {
 
     private double[] resultados;
-    
+    private int prueba;
+
     /**
      * Creates new form PanelGeneradorMidSquare2
      */
-    public PanelGeneradorMidSquare() {
+    public PanelGeneradorMidSquare(int prueba) {
         initComponents();
+        this.prueba = prueba;
     }
 
     /**
@@ -108,27 +111,42 @@ public class PanelGeneradorMidSquare extends javax.swing.JInternalFrame {
 
     private void jButtonEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEvaluarActionPerformed
         if (revisarCampos()) {
-            MidSquare MSC = new MidSquare(Integer.parseInt(jTextFieldLimite.getText()));
-            if (jTextFieldSemilla.getText().length() % 2 == 0) {
-                MSC.setSemilla(jTextFieldSemilla.getText());
-                PruebaPromedios PP = new PruebaPromedios();                
-                MSC.control();
-                convertirResultados(MSC.getResultados());
-                PP.controlPrueba(resultados);
-            } else {
-                JOptionPane.showMessageDialog(null, "Corriga el valor de la semilla para que sea un valor par");
+            switch (prueba) {
+                case 1:
+                    MidSquare MSC = new MidSquare(Integer.parseInt(jTextFieldLimite.getText()));
+                    if (jTextFieldSemilla.getText().length() % 2 == 0) {
+                        MSC.setSemilla(jTextFieldSemilla.getText());
+                        PruebaPromedios PP = new PruebaPromedios();
+                        MSC.control();
+                        convertirResultados(MSC.getResultados());
+                        PP.controlPrueba(resultados);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Corriga el valor de la semilla para que sea un valor par");
+                    }
+                    break;
+                case 2:
+                    MSC = new MidSquare(Integer.parseInt(jTextFieldLimite.getText()));
+                    if (jTextFieldSemilla.getText().length() % 2 == 0) {
+                        MSC.setSemilla(jTextFieldSemilla.getText());
+                        PruebaVarianza PV = new PruebaVarianza();
+                        MSC.control();
+                        convertirResultados(MSC.getResultados());
+                        PV.controlVarianza(resultados);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Corriga el valor de la semilla para que sea un valor par");
+                    }
+                    break;
             }
         }
     }//GEN-LAST:event_jButtonEvaluarActionPerformed
-    
-    
-    private void convertirResultados(String[] valores){
-        resultados=new double[valores.length];
+
+    private void convertirResultados(String[] valores) {
+        resultados = new double[valores.length];
         for (String valore : valores) {
             resultados[0] = Double.parseDouble(valore);
         }
     }
-    
+
     private boolean revisarCampos() {
         String cadena = "Por favor ingrese un dato en los siguientes campos:\n\n";
         int contador = 1;

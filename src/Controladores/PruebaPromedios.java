@@ -39,11 +39,11 @@ public class PruebaPromedios {
 
     private boolean realizarPrueba(int n) {
         TablaDistribucionNormal.cargarTabla();
-        double a = PruebaMediasVista.gradoAceptacion / 100;
+        double a = Double.parseDouble(PruebaMediasVista.jTextFieldAceptacion.getText()) / 100;
         a = (a / 2);
         double Z = TablaDistribucionNormal.retornarValor(a);
-        double aux=12*n;
-        double raiz=Math.sqrt(aux);
+        double aux = 12 * n;
+        double raiz = Math.sqrt(aux);
         double derecha = 1 / raiz;
         double limiteInferior = calcularLimite(1, Z, derecha);
         double limiteSuperior = calcularLimite(2, Z, derecha);
@@ -58,10 +58,10 @@ public class PruebaPromedios {
         double resultado = 0.0;
         switch (operacion) {
             case 1:
-                resultado = (0.5) - (Z *  raiz);
+                resultado = (0.5) - (Z * raiz);
                 break;
             case 2:
-                resultado = (0.5) + (Z *  raiz);
+                resultado = (0.5) + (Z * raiz);
                 break;
         }
         return resultado;

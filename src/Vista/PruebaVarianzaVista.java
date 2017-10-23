@@ -5,24 +5,24 @@
  */
 package Vista;
 
-import Controladores.GeneradorLEcuyer;
-import java.text.DecimalFormat;
+import Paneles.*;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author usuario
  */
-public class GeneradorLEcuyerVista extends javax.swing.JFrame {
+public class PruebaVarianzaVista extends javax.swing.JFrame {
 
     /**
-     * Creates new form GeneradorLEcuyer
+     * Creates new form PruebaVarianzaVista
      */
-    public GeneradorLEcuyerVista() {
+    public static int prueba = 2;
+
+    public PruebaVarianzaVista() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setTitle("SIMULACIONES - NRC: 8092 \\ Generador L'Ecuyer");
+        this.setTitle("SIMULACIONES - NRC: 8092 \\ Prueba Varianza");
     }
 
     /**
@@ -35,16 +35,16 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jComboBoxGenerador = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldValorX = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldValorY = new javax.swing.JTextField();
-        jTextFieldLimite = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jButtonEvaluar = new javax.swing.JButton();
+        jTextFieldAceptacion = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableResultados = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jRadioButtonAceptada = new javax.swing.JRadioButton();
+        jRadioButtonRechazada = new javax.swing.JRadioButton();
+        jDesktopPaneGeneradores = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuInicio = new javax.swing.JMenuItem();
@@ -64,20 +64,20 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Entrada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Entrada"));
 
-        jLabel1.setText("Valor de X");
-
-        jLabel2.setText("Valor de Y");
-
-        jLabel4.setText("Limite");
-
-        jButtonEvaluar.setText("Evaluar");
-        jButtonEvaluar.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxGenerador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Generador Basico", "Congruencial Lineal", "Fibonacci","LEcuyer","MidSquare","Winchmann Hill"}));
+        jComboBoxGenerador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEvaluarActionPerformed(evt);
+                jComboBoxGeneradorActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Generador a Probar");
+
+        jLabel2.setText("Grado de aceptación");
+
+        jLabel3.setText("%");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,74 +85,75 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldValorX, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBoxGenerador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldValorY, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEvaluar))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldAceptacion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxGenerador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldValorX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldValorY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jButtonEvaluar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTextFieldAceptacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(41, 41, 41))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Salida", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado Prueba"));
 
-        jTableResultados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jLabel4.setText("Hipótesis Nula");
 
-            },
-            new String [] {
-                "# de Iteración", "Valor de X", "Valor de Y", "Valor de Z", "Número Aleatorio"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
+        jRadioButtonAceptada.setText("Aceptada");
+        jRadioButtonAceptada.setEnabled(false);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTableResultados);
+        jRadioButtonRechazada.setText("Rechazada");
+        jRadioButtonRechazada.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGap(64, 64, 64)
+                .addComponent(jLabel4)
+                .addGap(31, 31, 31)
+                .addComponent(jRadioButtonAceptada)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButtonRechazada)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jRadioButtonAceptada)
+                    .addComponent(jRadioButtonRechazada))
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+
+        jDesktopPaneGeneradores.setBackground(new java.awt.Color(240, 240, 240));
+
+        javax.swing.GroupLayout jDesktopPaneGeneradoresLayout = new javax.swing.GroupLayout(jDesktopPaneGeneradores);
+        jDesktopPaneGeneradores.setLayout(jDesktopPaneGeneradoresLayout);
+        jDesktopPaneGeneradoresLayout.setHorizontalGroup(
+            jDesktopPaneGeneradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jDesktopPaneGeneradoresLayout.setVerticalGroup(
+            jDesktopPaneGeneradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 228, Short.MAX_VALUE)
         );
 
         jMenu2.setText("Inicio");
@@ -265,28 +266,32 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDesktopPaneGeneradores)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jDesktopPaneGeneradores)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInicioActionPerformed
-        this.setVisible(false);
         SimulacionesInicio SI = new SimulacionesInicio();
+        this.setVisible(false);
         SI.setVisible(true);
     }//GEN-LAST:event_jMenuInicioActionPerformed
 
@@ -296,8 +301,8 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
 
     private void jMenuItemGeneradorBasicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGeneradorBasicoActionPerformed
         GeneradorBasicoVista GBV = new GeneradorBasicoVista();
-        this.setVisible(false);
         GBV.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenuItemGeneradorBasicoActionPerformed
 
     private void jMenuItemMidSquareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMidSquareActionPerformed
@@ -325,7 +330,9 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemWichmannHillActionPerformed
 
     private void jMenuItemLEcuyerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLEcuyerActionPerformed
-        JOptionPane.showMessageDialog(null, "Usted ya se encuentra en esta ventana");
+        GeneradorLEcuyerVista GLE = new GeneradorLEcuyerVista();
+        this.setVisible(false);
+        GLE.setVisible(true);
     }//GEN-LAST:event_jMenuItemLEcuyerActionPerformed
 
     private void jMenuItemAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAreaActionPerformed
@@ -334,74 +341,66 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
         AIV.setVisible(true);
     }//GEN-LAST:event_jMenuItemAreaActionPerformed
 
-    private void jButtonEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEvaluarActionPerformed
-        limpiarTabla();
-        if (revisarCampos()) {
-            int semillaX = Integer.parseInt(jTextFieldValorX.getText());
-            int semillaY = Integer.parseInt(jTextFieldValorY.getText());
-            int limite = Integer.parseInt(jTextFieldLimite.getText());
-            DefaultTableModel modelo = (DefaultTableModel) jTableResultados.getModel();
-            GeneradorLEcuyer GLE = new GeneradorLEcuyer(semillaX, semillaY, limite);
-            GLE.Control();
-            Object[] valores = new Object[modelo.getColumnCount()];
-            DecimalFormat format = new DecimalFormat("#.###");
-            for (int i = 0; i < GLE.getSemillasX().length; i++) {
-                try {
-                    valores[0] = i;
-                    valores[1] = format.format(GLE.getSemillasX()[i]);
-                    valores[2] = format.format(GLE.getSemillasY()[i]);
-                    valores[3] = format.format(GLE.getSemillasZ()[i]);
-                    valores[4] = format.format(GLE.getResultados()[i]);
-                } catch (Exception e) {
-                    valores[3] = "N/A";
-                    valores[4] = "N/A";
-                }
-                modelo.addRow(valores);
-            }
-        }
-    }//GEN-LAST:event_jButtonEvaluarActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        PruebaMediasVista PMV=new PruebaMediasVista();
+        PruebaMediasVista PMV = new PruebaMediasVista();
         this.setVisible(false);
         PMV.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jComboBoxGeneradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxGeneradorActionPerformed
+        if (jTextFieldAceptacion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese un valor de aceptacion");
+        } else {
+            switch (jComboBoxGenerador.getSelectedIndex()) {
+                case 1:
+                    this.jDesktopPaneGeneradores.removeAll();
+                    this.jDesktopPaneGeneradores.repaint();
+                    PanelGeneradorBasico PGB = new PanelGeneradorBasico(prueba);
+                    this.jDesktopPaneGeneradores.add(PGB);
+                    PGB.show();
+                    break;
+                case 2:
+                    this.jDesktopPaneGeneradores.removeAll();
+                    this.jDesktopPaneGeneradores.repaint();
+                    PanelGeneradorCongruencialLineal PGCL = new PanelGeneradorCongruencialLineal(prueba);
+                    this.jDesktopPaneGeneradores.add(PGCL);
+                    PGCL.show();
+                    break;
+                case 3:
+                    this.jDesktopPaneGeneradores.removeAll();
+                    this.jDesktopPaneGeneradores.repaint();
+                    PanelGeneradorFibonacci PGF = new PanelGeneradorFibonacci(prueba);
+                    this.jDesktopPaneGeneradores.add(PGF);
+                    PGF.show();
+                    break;
+                case 4:
+                    this.jDesktopPaneGeneradores.removeAll();
+                    this.jDesktopPaneGeneradores.repaint();
+                    PanelGeneradorLEcuyer PGL = new PanelGeneradorLEcuyer(prueba);
+                    this.jDesktopPaneGeneradores.add(PGL);
+                    PGL.show();
+                    break;
+                case 5:
+                    this.jDesktopPaneGeneradores.removeAll();
+                    this.jDesktopPaneGeneradores.repaint();
+                    PanelGeneradorMidSquare PGMS = new PanelGeneradorMidSquare(prueba);
+                    this.jDesktopPaneGeneradores.add(PGMS);
+                    PGMS.show();
+                    break;
+                case 6:
+                    this.jDesktopPaneGeneradores.removeAll();
+                    this.jDesktopPaneGeneradores.repaint();
+                    PanelGeneradorWichmannHill PGWH = new PanelGeneradorWichmannHill(prueba);
+                    this.jDesktopPaneGeneradores.add(PGWH);
+                    PGWH.show();
+                    break;
+            }
+        }
+    }//GEN-LAST:event_jComboBoxGeneradorActionPerformed
+
     private void jMenuItemVarianzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVarianzaActionPerformed
-        PruebaVarianzaVista PV=new PruebaVarianzaVista();
-        this.setVisible(false);
-        PV.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Usted ya se encuentra en esta ventana");
     }//GEN-LAST:event_jMenuItemVarianzaActionPerformed
-
-    private void limpiarTabla() {
-        DefaultTableModel modelo = (DefaultTableModel) jTableResultados.getModel();
-        modelo.setRowCount(0);
-    }
-
-    private boolean revisarCampos() {
-        String cadena = "Por favor ingrese un dato en los siguientes campos:\n\n";
-        int contador = 1;
-        boolean check = true;
-        if (jTextFieldValorX.getText().trim().compareToIgnoreCase("") == 0) {
-            cadena = cadena + contador + ". Valor de X\n";
-            contador++;
-            check = false;
-        }
-        if (jTextFieldValorY.getText().trim().compareToIgnoreCase("") == 0) {
-            cadena = cadena + contador + ". Valor de Y\n";
-            contador++;
-            check = false;
-        }
-        if (jTextFieldLimite.getText().trim().compareToIgnoreCase("") == 0) {
-            cadena = cadena + contador + ". Limite\n";
-            contador++;
-            check = false;
-        }
-        if (cadena.compareToIgnoreCase("Por favor ingrese un dato en los siguientes campos:\n\n") != 0) {
-            JOptionPane.showMessageDialog(null, cadena);
-        }
-        return check;
-    }
 
     /**
      * @param args the command line arguments
@@ -420,13 +419,13 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GeneradorLEcuyerVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaVarianzaVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GeneradorLEcuyerVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaVarianzaVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GeneradorLEcuyerVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaVarianzaVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GeneradorLEcuyerVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaVarianzaVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -434,15 +433,17 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GeneradorLEcuyerVista().setVisible(true);
+                new PruebaVarianzaVista().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonEvaluar;
+    private javax.swing.JComboBox<String> jComboBoxGenerador;
+    private javax.swing.JDesktopPane jDesktopPaneGeneradores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -462,10 +463,8 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuSalir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableResultados;
-    private javax.swing.JTextField jTextFieldLimite;
-    private javax.swing.JTextField jTextFieldValorX;
-    private javax.swing.JTextField jTextFieldValorY;
+    public static javax.swing.JRadioButton jRadioButtonAceptada;
+    public static javax.swing.JRadioButton jRadioButtonRechazada;
+    public static javax.swing.JTextField jTextFieldAceptacion;
     // End of variables declaration//GEN-END:variables
 }

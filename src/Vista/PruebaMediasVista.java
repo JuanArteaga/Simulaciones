@@ -17,12 +17,12 @@ public class PruebaMediasVista extends javax.swing.JFrame {
     /**
      * Creates new form PruebaMediasVista
      */
-    public static double gradoAceptacion;
-
+    public static int prueba=1;
+    
     public PruebaMediasVista() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setTitle("SIMULACIONES - NRC: 8092");
+        this.setTitle("SIMULACIONES - NRC: 8092 \\ Prueba Promedios");
     }
 
     /**
@@ -60,6 +60,7 @@ public class PruebaMediasVista extends javax.swing.JFrame {
         jMenuItemArea = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemVarianza = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -249,6 +250,14 @@ public class PruebaMediasVista extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem1);
 
+        jMenuItemVarianza.setText("Varianza");
+        jMenuItemVarianza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemVarianzaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItemVarianza);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -344,48 +353,54 @@ public class PruebaMediasVista extends javax.swing.JFrame {
                 case 1:
                     this.jDesktopPaneGeneradores.removeAll();
                     this.jDesktopPaneGeneradores.repaint();
-                    PanelGeneradorBasico PGB = new PanelGeneradorBasico();
+                    PanelGeneradorBasico PGB = new PanelGeneradorBasico(prueba);
                     this.jDesktopPaneGeneradores.add(PGB);
                     PGB.show();
                     break;
                 case 2:
                     this.jDesktopPaneGeneradores.removeAll();
                     this.jDesktopPaneGeneradores.repaint();
-                    PanelGeneradorCongruencialLineal PGCL = new PanelGeneradorCongruencialLineal();
+                    PanelGeneradorCongruencialLineal PGCL = new PanelGeneradorCongruencialLineal(prueba);
                     this.jDesktopPaneGeneradores.add(PGCL);
                     PGCL.show();
                     break;
                 case 3:
                     this.jDesktopPaneGeneradores.removeAll();
                     this.jDesktopPaneGeneradores.repaint();
-                    PanelGeneradorFibonacci PGF = new PanelGeneradorFibonacci();
+                    PanelGeneradorFibonacci PGF = new PanelGeneradorFibonacci(prueba);
                     this.jDesktopPaneGeneradores.add(PGF);
                     PGF.show();
                     break;
                 case 4:
                     this.jDesktopPaneGeneradores.removeAll();
                     this.jDesktopPaneGeneradores.repaint();
-                    PanelGeneradorLEcuyer PGL = new PanelGeneradorLEcuyer();
+                    PanelGeneradorLEcuyer PGL = new PanelGeneradorLEcuyer(prueba);
                     this.jDesktopPaneGeneradores.add(PGL);
                     PGL.show();
                     break;
                 case 5:
                     this.jDesktopPaneGeneradores.removeAll();
                     this.jDesktopPaneGeneradores.repaint();
-                    PanelGeneradorMidSquare PGMS = new PanelGeneradorMidSquare();
+                    PanelGeneradorMidSquare PGMS = new PanelGeneradorMidSquare(prueba);
                     this.jDesktopPaneGeneradores.add(PGMS);
                     PGMS.show();
                     break;
                 case 6:
                     this.jDesktopPaneGeneradores.removeAll();
                     this.jDesktopPaneGeneradores.repaint();
-                    PanelGeneradorWichmannHill PGWH = new PanelGeneradorWichmannHill();
+                    PanelGeneradorWichmannHill PGWH = new PanelGeneradorWichmannHill(prueba);
                     this.jDesktopPaneGeneradores.add(PGWH);
                     PGWH.show();
                     break;
             }
         }
     }//GEN-LAST:event_jComboBoxGeneradorActionPerformed
+
+    private void jMenuItemVarianzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVarianzaActionPerformed
+        PruebaVarianzaVista PV = new PruebaVarianzaVista();
+        this.setVisible(false);
+        PV.setVisible(true);
+    }//GEN-LAST:event_jMenuItemVarianzaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -443,6 +458,7 @@ public class PruebaMediasVista extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemLEcuyer;
     private javax.swing.JMenuItem jMenuItemLineales;
     private javax.swing.JMenuItem jMenuItemMidSquare;
+    private javax.swing.JMenuItem jMenuItemVarianza;
     private javax.swing.JMenuItem jMenuItemWichmannHill;
     private javax.swing.JMenuItem jMenuSalir;
     private javax.swing.JPanel jPanel1;

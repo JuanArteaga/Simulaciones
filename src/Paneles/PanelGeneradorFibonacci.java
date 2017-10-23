@@ -7,6 +7,7 @@ package Paneles;
 
 import Controladores.Fibonacci;
 import Controladores.PruebaPromedios;
+import Controladores.PruebaVarianza;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,8 +19,11 @@ public class PanelGeneradorFibonacci extends javax.swing.JInternalFrame {
     /**
      * Creates new form PanelGeneradorFibonacci2
      */
-    public PanelGeneradorFibonacci() {
+    private int prueba;
+
+    public PanelGeneradorFibonacci(int prueba) {
         initComponents();
+        this.prueba = prueba;
     }
 
     /**
@@ -143,13 +147,23 @@ public class PanelGeneradorFibonacci extends javax.swing.JInternalFrame {
 
     private void jButtonEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEvaluarActionPerformed
         if (revisarCampos()) {
-            Fibonacci F = new Fibonacci(Integer.parseInt(jTextFieldLimite.getText()), Integer.parseInt(jTextFieldValorM.getText()), jComboBoxOperacion.getSelectedIndex());
-            F.Control(Integer.parseInt(jTextFieldNumero1.getText()), Integer.parseInt(jTextFieldNumero2.getText()));
-            PruebaPromedios PP = new PruebaPromedios();
-            PP.controlPrueba(F.getResultados());
+            switch (prueba) {
+                case 1:
+                    Fibonacci F = new Fibonacci(Integer.parseInt(jTextFieldLimite.getText()), Integer.parseInt(jTextFieldValorM.getText()), jComboBoxOperacion.getSelectedIndex());
+                    F.Control(Integer.parseInt(jTextFieldNumero1.getText()), Integer.parseInt(jTextFieldNumero2.getText()));
+                    PruebaPromedios PP = new PruebaPromedios();
+                    PP.controlPrueba(F.getResultados());
+                    break;
+                case 2:
+                    F = new Fibonacci(Integer.parseInt(jTextFieldLimite.getText()), Integer.parseInt(jTextFieldValorM.getText()), jComboBoxOperacion.getSelectedIndex());
+                    F.Control(Integer.parseInt(jTextFieldNumero1.getText()), Integer.parseInt(jTextFieldNumero2.getText()));
+                    PruebaVarianza PV = new PruebaVarianza();
+                    PV.controlVarianza(F.getResultados());
+                    break;
+            }
         }
     }//GEN-LAST:event_jButtonEvaluarActionPerformed
-    
+
     private boolean revisarCampos() {
         String cadena = "Por favor ingrese un dato en los siguientes campos:\n\n";
         int contador = 1;

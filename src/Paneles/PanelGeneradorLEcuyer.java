@@ -7,6 +7,7 @@ package Paneles;
 
 import Controladores.GeneradorLEcuyer;
 import Controladores.PruebaPromedios;
+import Controladores.PruebaVarianza;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,8 +19,11 @@ public class PanelGeneradorLEcuyer extends javax.swing.JInternalFrame {
     /**
      * Creates new form PanelGeneradorLEcuyer2
      */
-    public PanelGeneradorLEcuyer() {
+    private int prueba;
+
+    public PanelGeneradorLEcuyer(int prueba) {
         initComponents();
+        this.prueba = prueba;
     }
 
     /**
@@ -118,14 +122,27 @@ public class PanelGeneradorLEcuyer extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEvaluarActionPerformed
-        if(revisarCampos()){
-            int semillaX = Integer.parseInt(jTextFieldValorX.getText());
-            int semillaY = Integer.parseInt(jTextFieldValorY.getText());
-            int limite = Integer.parseInt(jTextFieldLimite.getText());
-            GeneradorLEcuyer GLE = new GeneradorLEcuyer(semillaX, semillaY, limite);
-            GLE.Control();
-            PruebaPromedios PP=new PruebaPromedios();
-            PP.controlPrueba(GLE.getResultados());
+        if (revisarCampos()) {
+            switch (prueba) {
+                case 1:
+                    int semillaX = Integer.parseInt(jTextFieldValorX.getText());
+                    int semillaY = Integer.parseInt(jTextFieldValorY.getText());
+                    int limite = Integer.parseInt(jTextFieldLimite.getText());
+                    GeneradorLEcuyer GLE = new GeneradorLEcuyer(semillaX, semillaY, limite);
+                    GLE.Control();
+                    PruebaPromedios PP = new PruebaPromedios();
+                    PP.controlPrueba(GLE.getResultados());
+                    break;
+                case 2:
+                    semillaX = Integer.parseInt(jTextFieldValorX.getText());
+                    semillaY = Integer.parseInt(jTextFieldValorY.getText());
+                    limite = Integer.parseInt(jTextFieldLimite.getText());
+                    GLE = new GeneradorLEcuyer(semillaX, semillaY, limite);
+                    GLE.Control();
+                    PruebaVarianza PV = new PruebaVarianza();
+                    PV.controlVarianza(GLE.getResultados());
+                    break;
+            }
         }
     }//GEN-LAST:event_jButtonEvaluarActionPerformed
 

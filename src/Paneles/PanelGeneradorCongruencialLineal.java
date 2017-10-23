@@ -7,6 +7,7 @@ package Paneles;
 
 import Controladores.CongruencialesLineales;
 import Controladores.PruebaPromedios;
+import Controladores.PruebaVarianza;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,8 +19,11 @@ public class PanelGeneradorCongruencialLineal extends javax.swing.JInternalFrame
     /**
      * Creates new form PanelGeneradorCongruencialLineal2
      */
-    public PanelGeneradorCongruencialLineal() {
+    private int prueba;
+
+    public PanelGeneradorCongruencialLineal(int prueba) {
         initComponents();
+        this.prueba = prueba;
     }
 
     /**
@@ -141,18 +145,33 @@ public class PanelGeneradorCongruencialLineal extends javax.swing.JInternalFrame
 
     private void jButtonEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEvaluarActionPerformed
         if (revisarCampos()) {
-            int semilla = Integer.parseInt(jTextFieldSemilla.getText());
-            int limite = Integer.parseInt(jTextFieldLimite.getText());
-            int valorA = Integer.parseInt(jTextFieldValorA.getText());
-            int valorB = Integer.parseInt(jTextFieldValorB.getText());
-            int valorM = Integer.parseInt(jTextFieldValorM.getText());
-            CongruencialesLineales CL = new CongruencialesLineales(semilla, limite, valorA, valorB, valorM);
-            CL.Control();
-            PruebaPromedios PP = new PruebaPromedios();
-            PP.controlPrueba(CL.getResultados());
+            switch (prueba) {
+                case 1:
+                    int semilla = Integer.parseInt(jTextFieldSemilla.getText());
+                    int limite = Integer.parseInt(jTextFieldLimite.getText());
+                    int valorA = Integer.parseInt(jTextFieldValorA.getText());
+                    int valorB = Integer.parseInt(jTextFieldValorB.getText());
+                    int valorM = Integer.parseInt(jTextFieldValorM.getText());
+                    CongruencialesLineales CL = new CongruencialesLineales(semilla, limite, valorA, valorB, valorM);
+                    CL.Control();
+                    PruebaPromedios PP = new PruebaPromedios();
+                    PP.controlPrueba(CL.getResultados());
+                    break;
+                case 2:
+                    semilla = Integer.parseInt(jTextFieldSemilla.getText());
+                    limite = Integer.parseInt(jTextFieldLimite.getText());
+                    valorA = Integer.parseInt(jTextFieldValorA.getText());
+                    valorB = Integer.parseInt(jTextFieldValorB.getText());
+                    valorM = Integer.parseInt(jTextFieldValorM.getText());
+                    CL = new CongruencialesLineales(semilla, limite, valorA, valorB, valorM);
+                    CL.Control();
+                    PruebaVarianza PV = new PruebaVarianza();
+                    PV.controlVarianza(CL.getResultados());
+                    break;
+            }
         }
     }//GEN-LAST:event_jButtonEvaluarActionPerformed
-    
+
     private boolean revisarCampos() {
         String cadena = "Por favor ingrese un dato en los siguientes campos:\n\n";
         int contador = 1;
