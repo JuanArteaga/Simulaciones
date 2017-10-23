@@ -6,8 +6,10 @@
 package Paneles;
 
 import Controladores.Fibonacci;
+import Controladores.PruebaChiCuadrado;
 import Controladores.PruebaPromedios;
 import Controladores.PruebaVarianza;
+import Vista.PruebaChiCuadradoVista;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,7 +51,7 @@ public class PanelGeneradorFibonacci extends javax.swing.JInternalFrame {
         jButtonEvaluar = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Prueba Promedio - Fibonacci");
+        setTitle("Fibonacci");
 
         jLabel1.setText("Primer Termino");
 
@@ -159,6 +161,12 @@ public class PanelGeneradorFibonacci extends javax.swing.JInternalFrame {
                     F.Control(Integer.parseInt(jTextFieldNumero1.getText()), Integer.parseInt(jTextFieldNumero2.getText()));
                     PruebaVarianza PV = new PruebaVarianza();
                     PV.controlVarianza(F.getResultados());
+                    break;
+                case 3:
+                    F = new Fibonacci(Integer.parseInt(jTextFieldLimite.getText()), Integer.parseInt(jTextFieldValorM.getText()), jComboBoxOperacion.getSelectedIndex());
+                    F.Control(Integer.parseInt(jTextFieldNumero1.getText()), Integer.parseInt(jTextFieldNumero2.getText()));
+                    PruebaChiCuadrado PCC = new PruebaChiCuadrado(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
+                    PCC.control(F.getResultados());
                     break;
             }
         }

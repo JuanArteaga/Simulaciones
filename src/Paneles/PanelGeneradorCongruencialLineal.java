@@ -6,8 +6,10 @@
 package Paneles;
 
 import Controladores.CongruencialesLineales;
+import Controladores.PruebaChiCuadrado;
 import Controladores.PruebaPromedios;
 import Controladores.PruebaVarianza;
+import Vista.PruebaChiCuadradoVista;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,7 +51,7 @@ public class PanelGeneradorCongruencialLineal extends javax.swing.JInternalFrame
         jButtonEvaluar = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Prueba Promedios - Congruencial Lineal");
+        setTitle("Congruencial Lineal");
 
         jLabel1.setText("Semilla");
 
@@ -167,6 +169,17 @@ public class PanelGeneradorCongruencialLineal extends javax.swing.JInternalFrame
                     CL.Control();
                     PruebaVarianza PV = new PruebaVarianza();
                     PV.controlVarianza(CL.getResultados());
+                    break;
+                case 3:
+                    semilla = Integer.parseInt(jTextFieldSemilla.getText());
+                    limite = Integer.parseInt(jTextFieldLimite.getText());
+                    valorA = Integer.parseInt(jTextFieldValorA.getText());
+                    valorB = Integer.parseInt(jTextFieldValorB.getText());
+                    valorM = Integer.parseInt(jTextFieldValorM.getText());
+                    CL = new CongruencialesLineales(semilla, limite, valorA, valorB, valorM);
+                    CL.Control();
+                    PruebaChiCuadrado PCC = new PruebaChiCuadrado(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
+                    PCC.control(CL.getResultados());
                     break;
             }
         }

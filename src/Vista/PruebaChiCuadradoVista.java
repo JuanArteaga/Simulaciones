@@ -5,24 +5,24 @@
  */
 package Vista;
 
-import Controladores.WichmannHill;
-import java.text.DecimalFormat;
+import Paneles.*;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author usuario
  */
-public class WichmannHillVista extends javax.swing.JFrame {
+public class PruebaChiCuadradoVista extends javax.swing.JFrame {
 
     /**
-     * Creates new form WichmannHillVista
+     * Creates new form PruebaChiCuadradoVista
      */
-    public WichmannHillVista() {
+    public int prueba = 3;
+
+    public PruebaChiCuadradoVista() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setTitle("SIMULACIONES - NRC: 8092 \\ Wichmann y Hill");
+        this.setTitle("SIMULACIONES - NRC: 8092 \\ Prueba Chi Cuadrado");
     }
 
     /**
@@ -35,21 +35,21 @@ public class WichmannHillVista extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jComboBoxGenerador = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldValorX = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldValorY = new javax.swing.JTextField();
+        jTextFieldAceptacion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldValorZ = new javax.swing.JTextField();
-        jTextFieldLimite = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jButtonEvaluar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jComboBoxGrupos = new javax.swing.JComboBox<>();
+        jDesktopPaneGeneradores = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableResultados = new javax.swing.JTable();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuInicio = new javax.swing.JMenuItem();
+        jLabel4 = new javax.swing.JLabel();
+        jRadioButtonAceptada = new javax.swing.JRadioButton();
+        jRadioButtonRechazada = new javax.swing.JRadioButton();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuInicio1 = new javax.swing.JMenuItem();
         jMenuSalir = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemGeneradorBasico = new javax.swing.JMenuItem();
@@ -58,31 +58,33 @@ public class WichmannHillVista extends javax.swing.JFrame {
         jMenuItemFibonacci = new javax.swing.JMenuItem();
         jMenuItemWichmannHill = new javax.swing.JMenuItem();
         jMenuItemLEcuyer = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItemArea = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItemArea = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItemVarianza = new javax.swing.JMenuItem();
         jMenuItemChiCuadrado = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Entrada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Entrada"));
 
-        jLabel1.setText("Valor de X");
-
-        jLabel2.setText("Valor de Y");
-
-        jLabel3.setText("Valor de Z");
-
-        jLabel4.setText("Limite");
-
-        jButtonEvaluar.setText("Evaluar");
-        jButtonEvaluar.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxGenerador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Generador Basico", "Congruencial Lineal", "Fibonacci","LEcuyer","MidSquare","Winchmann Hill"}));
+        jComboBoxGenerador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEvaluarActionPerformed(evt);
+                jComboBoxGeneradorActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Generador a Probar");
+
+        jLabel2.setText("Grado de aceptación");
+
+        jLabel3.setText("%");
+
+        jLabel5.setText("Grupos");
+
+        jComboBoxGrupos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"}));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,93 +92,92 @@ public class WichmannHillVista extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldValorZ, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(jTextFieldValorX))
+                .addComponent(jComboBoxGenerador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldAceptacion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldValorY, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jButtonEvaluar)
-                .addContainerGap())
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBoxGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextFieldValorX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextFieldValorY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldValorZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextFieldLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jButtonEvaluar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxGenerador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldAceptacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jComboBoxGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Salida", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jDesktopPaneGeneradores.setBackground(new java.awt.Color(240, 240, 240));
 
-        jTableResultados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        javax.swing.GroupLayout jDesktopPaneGeneradoresLayout = new javax.swing.GroupLayout(jDesktopPaneGeneradores);
+        jDesktopPaneGeneradores.setLayout(jDesktopPaneGeneradoresLayout);
+        jDesktopPaneGeneradoresLayout.setHorizontalGroup(
+            jDesktopPaneGeneradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jDesktopPaneGeneradoresLayout.setVerticalGroup(
+            jDesktopPaneGeneradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 221, Short.MAX_VALUE)
+        );
 
-            },
-            new String [] {
-                "# de Iteración", "Valor de X", "Valor de Y", "Valor de Z", "Número Aleatorio"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado Prueba"));
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTableResultados);
+        jLabel4.setText("Hipótesis Nula");
+
+        jRadioButtonAceptada.setText("Aceptada");
+        jRadioButtonAceptada.setEnabled(false);
+
+        jRadioButtonRechazada.setText("Rechazada");
+        jRadioButtonRechazada.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(64, 64, 64)
+                .addComponent(jLabel4)
+                .addGap(31, 31, 31)
+                .addComponent(jRadioButtonAceptada)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButtonRechazada)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jRadioButtonAceptada)
+                    .addComponent(jRadioButtonRechazada))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
-        jMenu2.setText("Inicio");
+        jMenu3.setText("Inicio");
 
-        jMenuInicio.setText("Volver a Inicio");
-        jMenuInicio.addActionListener(new java.awt.event.ActionListener() {
+        jMenuInicio1.setText("Volver a Inicio");
+        jMenuInicio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuInicioActionPerformed(evt);
+                jMenuInicio1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuInicio);
+        jMenu3.add(jMenuInicio1);
 
         jMenuSalir.setText("Salir");
         jMenuSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -184,9 +185,9 @@ public class WichmannHillVista extends javax.swing.JFrame {
                 jMenuSalirActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuSalir);
+        jMenu3.add(jMenuSalir);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar2.add(jMenu3);
 
         jMenu1.setText("Generadores");
 
@@ -238,9 +239,9 @@ public class WichmannHillVista extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemLEcuyer);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar2.add(jMenu1);
 
-        jMenu3.setText("Area Imagen");
+        jMenu4.setText("Area Imagen");
 
         jMenuItemArea.setText("Area de una Imagen");
         jMenuItemArea.addActionListener(new java.awt.event.ActionListener() {
@@ -248,11 +249,11 @@ public class WichmannHillVista extends javax.swing.JFrame {
                 jMenuItemAreaActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItemArea);
+        jMenu4.add(jMenuItemArea);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar2.add(jMenu4);
 
-        jMenu4.setText("Pruebas");
+        jMenu5.setText("Pruebas");
 
         jMenuItem1.setText("Promedios");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -260,7 +261,7 @@ public class WichmannHillVista extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem1);
+        jMenu5.add(jMenuItem1);
 
         jMenuItemVarianza.setText("Varianza");
         jMenuItemVarianza.addActionListener(new java.awt.event.ActionListener() {
@@ -268,19 +269,19 @@ public class WichmannHillVista extends javax.swing.JFrame {
                 jMenuItemVarianzaActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItemVarianza);
+        jMenu5.add(jMenuItemVarianza);
 
-        jMenuItemChiCuadrado.setText("Chi  Cuadrado");
+        jMenuItemChiCuadrado.setText("Chi Cuadrado");
         jMenuItemChiCuadrado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemChiCuadradoActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItemChiCuadrado);
+        jMenu5.add(jMenuItemChiCuadrado);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar2.add(jMenu5);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -290,24 +291,30 @@ public class WichmannHillVista extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDesktopPaneGeneradores, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jDesktopPaneGeneradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInicioActionPerformed
-        JOptionPane.showMessageDialog(null, "Usted ya se encuentra en esta ventana");
-    }//GEN-LAST:event_jMenuInicioActionPerformed
+    private void jMenuInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInicio1ActionPerformed
+        SimulacionesInicio SI = new SimulacionesInicio();
+        this.setVisible(false);
+        SI.setVisible(true);
+    }//GEN-LAST:event_jMenuInicio1ActionPerformed
 
     private void jMenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalirActionPerformed
         System.exit(0);
@@ -343,97 +350,86 @@ public class WichmannHillVista extends javax.swing.JFrame {
         WHV.setVisible(true);
     }//GEN-LAST:event_jMenuItemWichmannHillActionPerformed
 
+    private void jMenuItemLEcuyerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLEcuyerActionPerformed
+        GeneradorLEcuyerVista GLE = new GeneradorLEcuyerVista();
+        this.setVisible(false);
+        GLE.setVisible(true);
+    }//GEN-LAST:event_jMenuItemLEcuyerActionPerformed
+
     private void jMenuItemAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAreaActionPerformed
         AreaImagenVista AIV = new AreaImagenVista();
         this.setVisible(false);
         AIV.setVisible(true);
     }//GEN-LAST:event_jMenuItemAreaActionPerformed
 
-    private void jButtonEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEvaluarActionPerformed
-        limpiarTabla();
-        if (revisarCampos()) {
-            int semillaX = Integer.parseInt(jTextFieldValorX.getText());
-            int semillaY = Integer.parseInt(jTextFieldValorY.getText());
-            int semillaZ = Integer.parseInt(jTextFieldValorZ.getText());
-            int limite = Integer.parseInt(jTextFieldLimite.getText());
-            DefaultTableModel modelo = (DefaultTableModel) jTableResultados.getModel();
-            WichmannHill WH = new WichmannHill(semillaX, semillaY, semillaZ, limite);
-            WH.Control();
-            Object[] valores = new Object[modelo.getColumnCount()];
-            DecimalFormat format = new DecimalFormat("#.###");
-            for (int i = 0; i < WH.getSemillasX().length; i++) {
-                try {
-                    valores[0] = i;
-                    valores[1] = format.format(WH.getSemillasX()[i]);
-                    valores[2] = format.format(WH.getSemillasY()[i]);
-                    valores[3] = format.format(WH.getSemillasZ()[i]);
-                    valores[4] = format.format(WH.getResultados()[i]);
-                } catch (Exception e) {
-                    valores[4] = "N/A";
-                }
-                modelo.addRow(valores);
-            }
-        }
-    }//GEN-LAST:event_jButtonEvaluarActionPerformed
-
-    private void jMenuItemLEcuyerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLEcuyerActionPerformed
-        GeneradorLEcuyerVista GLE=new GeneradorLEcuyerVista();
-        this.setVisible(false);
-        GLE.setVisible(true);
-    }//GEN-LAST:event_jMenuItemLEcuyerActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        PruebaMediasVista PMV=new PruebaMediasVista();
+        PruebaMediasVista PMV = new PruebaMediasVista();
         this.setVisible(false);
         PMV.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItemVarianzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVarianzaActionPerformed
-        PruebaVarianzaVista PV=new PruebaVarianzaVista();
+        PruebaVarianzaVista PVV = new PruebaVarianzaVista();
         this.setVisible(false);
-        PV.setVisible(true);
+        PVV.setVisible(true);
     }//GEN-LAST:event_jMenuItemVarianzaActionPerformed
 
+    private void jComboBoxGeneradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxGeneradorActionPerformed
+        if (jTextFieldAceptacion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese un valor de aceptacion");
+        } else if (jComboBoxGrupos.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Escoja un número de grupos");            
+        } else {
+            switch (jComboBoxGenerador.getSelectedIndex()) {
+                case 1:
+                    this.jDesktopPaneGeneradores.removeAll();
+                    this.jDesktopPaneGeneradores.repaint();
+                    PanelGeneradorBasico PGB = new PanelGeneradorBasico(prueba);
+                    this.jDesktopPaneGeneradores.add(PGB);
+                    PGB.show();
+                    break;
+                case 2:
+                    this.jDesktopPaneGeneradores.removeAll();
+                    this.jDesktopPaneGeneradores.repaint();
+                    PanelGeneradorCongruencialLineal PGCL = new PanelGeneradorCongruencialLineal(prueba);
+                    this.jDesktopPaneGeneradores.add(PGCL);
+                    PGCL.show();
+                    break;
+                case 3:
+                    this.jDesktopPaneGeneradores.removeAll();
+                    this.jDesktopPaneGeneradores.repaint();
+                    PanelGeneradorFibonacci PGF = new PanelGeneradorFibonacci(prueba);
+                    this.jDesktopPaneGeneradores.add(PGF);
+                    PGF.show();
+                    break;
+                case 4:
+                    this.jDesktopPaneGeneradores.removeAll();
+                    this.jDesktopPaneGeneradores.repaint();
+                    PanelGeneradorLEcuyer PGL = new PanelGeneradorLEcuyer(prueba);
+                    this.jDesktopPaneGeneradores.add(PGL);
+                    PGL.show();
+                    break;
+                case 5:
+                    this.jDesktopPaneGeneradores.removeAll();
+                    this.jDesktopPaneGeneradores.repaint();
+                    PanelGeneradorMidSquare PGMS = new PanelGeneradorMidSquare(prueba);
+                    this.jDesktopPaneGeneradores.add(PGMS);
+                    PGMS.show();
+                    break;
+                case 6:
+                    this.jDesktopPaneGeneradores.removeAll();
+                    this.jDesktopPaneGeneradores.repaint();
+                    PanelGeneradorWichmannHill PGWH = new PanelGeneradorWichmannHill(prueba);
+                    this.jDesktopPaneGeneradores.add(PGWH);
+                    PGWH.show();
+                    break;
+            }
+        }
+    }//GEN-LAST:event_jComboBoxGeneradorActionPerformed
+
     private void jMenuItemChiCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemChiCuadradoActionPerformed
-        PruebaChiCuadradoVista PCCV=new PruebaChiCuadradoVista();
-        this.setVisible(false);
-        PCCV.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Usted ya se encuentra en esta ventana");
     }//GEN-LAST:event_jMenuItemChiCuadradoActionPerformed
-
-    private void limpiarTabla() {
-        DefaultTableModel modelo = (DefaultTableModel) jTableResultados.getModel();
-        modelo.setRowCount(0);
-    }
-
-    private boolean revisarCampos() {
-        String cadena = "Por favor ingrese un dato en los siguientes campos:\n\n";
-        int contador = 1;
-        boolean check = true;
-        if (jTextFieldValorX.getText().trim().compareToIgnoreCase("") == 0) {
-            cadena = cadena + contador + ". Valor de X\n";
-            contador++;
-            check = false;
-        }
-        if (jTextFieldValorY.getText().trim().compareToIgnoreCase("") == 0) {
-            cadena = cadena + contador + ". Valor de Y\n";
-            contador++;
-            check = false;
-        }
-        if (jTextFieldValorZ.getText().trim().compareToIgnoreCase("") == 0) {
-            cadena = cadena + contador + ". Valor de Z\n";
-            contador++;
-            check = false;
-        }
-        if (jTextFieldLimite.getText().trim().compareToIgnoreCase("") == 0) {
-            cadena = cadena + contador + ". Limite\n";
-            contador++;
-            check = false;
-        }
-        if (cadena.compareToIgnoreCase("Por favor ingrese un dato en los siguientes campos:\n\n") != 0) {
-            JOptionPane.showMessageDialog(null, cadena);
-        }
-        return check;
-    }
 
     /**
      * @param args the command line arguments
@@ -452,36 +448,42 @@ public class WichmannHillVista extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(WichmannHillVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaChiCuadradoVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(WichmannHillVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaChiCuadradoVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(WichmannHillVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaChiCuadradoVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(WichmannHillVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaChiCuadradoVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WichmannHillVista().setVisible(true);
+                new PruebaChiCuadradoVista().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonEvaluar;
+    private javax.swing.JComboBox<String> jComboBoxGenerador;
+    public static javax.swing.JComboBox<String> jComboBoxGrupos;
+    private javax.swing.JDesktopPane jDesktopPaneGeneradores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuInicio;
+    private javax.swing.JMenuItem jMenuInicio1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemArea;
     private javax.swing.JMenuItem jMenuItemChiCuadrado;
@@ -495,11 +497,8 @@ public class WichmannHillVista extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuSalir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableResultados;
-    private javax.swing.JTextField jTextFieldLimite;
-    private javax.swing.JTextField jTextFieldValorX;
-    private javax.swing.JTextField jTextFieldValorY;
-    private javax.swing.JTextField jTextFieldValorZ;
+    public static javax.swing.JRadioButton jRadioButtonAceptada;
+    public static javax.swing.JRadioButton jRadioButtonRechazada;
+    public static javax.swing.JTextField jTextFieldAceptacion;
     // End of variables declaration//GEN-END:variables
 }

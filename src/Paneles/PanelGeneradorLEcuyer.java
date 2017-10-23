@@ -6,8 +6,10 @@
 package Paneles;
 
 import Controladores.GeneradorLEcuyer;
+import Controladores.PruebaChiCuadrado;
 import Controladores.PruebaPromedios;
 import Controladores.PruebaVarianza;
+import Vista.PruebaChiCuadradoVista;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,7 +47,7 @@ public class PanelGeneradorLEcuyer extends javax.swing.JInternalFrame {
         jButtonEvaluar = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Prueba Promedio - L'Ecuyer");
+        setTitle("L'Ecuyer");
 
         jLabel1.setText("Valor de X");
 
@@ -141,6 +143,15 @@ public class PanelGeneradorLEcuyer extends javax.swing.JInternalFrame {
                     GLE.Control();
                     PruebaVarianza PV = new PruebaVarianza();
                     PV.controlVarianza(GLE.getResultados());
+                    break;
+                case 3:
+                    semillaX = Integer.parseInt(jTextFieldValorX.getText());
+                    semillaY = Integer.parseInt(jTextFieldValorY.getText());
+                    limite = Integer.parseInt(jTextFieldLimite.getText());
+                    GLE = new GeneradorLEcuyer(semillaX, semillaY, limite);
+                    GLE.Control();
+                    PruebaChiCuadrado PCC = new PruebaChiCuadrado(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
+                    PCC.control(GLE.getResultados());
                     break;
             }
         }

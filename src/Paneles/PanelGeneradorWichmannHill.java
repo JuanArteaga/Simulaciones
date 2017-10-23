@@ -5,9 +5,11 @@
  */
 package Paneles;
 
+import Controladores.PruebaChiCuadrado;
 import Controladores.PruebaPromedios;
 import Controladores.PruebaVarianza;
 import Controladores.WichmannHill;
+import Vista.PruebaChiCuadradoVista;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,7 +49,7 @@ public class PanelGeneradorWichmannHill extends javax.swing.JInternalFrame {
         jButtonEvaluar = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Prueba Promedio - WichmannHill");
+        setTitle("WichmannHill");
 
         jLabel1.setText("Valor de X");
 
@@ -161,6 +163,16 @@ public class PanelGeneradorWichmannHill extends javax.swing.JInternalFrame {
                     WH.Control();
                     PruebaVarianza PV = new PruebaVarianza();
                     PV.controlVarianza(WH.getResultados());
+                    break;
+                case 3:
+                    semillaX = Integer.parseInt(jTextFieldValorX.getText());
+                    semillaY = Integer.parseInt(jTextFieldValorY.getText());
+                    semillaZ = Integer.parseInt(jTextFieldValorZ.getText());
+                    limite = Integer.parseInt(jTextFieldLimite.getText());
+                    WH = new WichmannHill(semillaX, semillaY, semillaZ, limite);
+                    WH.Control();
+                    PruebaChiCuadrado PCC = new PruebaChiCuadrado(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
+                    PCC.control(WH.getResultados());
                     break;
             }
         }

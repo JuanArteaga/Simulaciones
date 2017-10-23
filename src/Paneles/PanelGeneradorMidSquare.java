@@ -6,8 +6,10 @@
 package Paneles;
 
 import Controladores.MidSquare;
+import Controladores.PruebaChiCuadrado;
 import Controladores.PruebaPromedios;
 import Controladores.PruebaVarianza;
+import Vista.PruebaChiCuadradoVista;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,7 +46,7 @@ public class PanelGeneradorMidSquare extends javax.swing.JInternalFrame {
         jButtonEvaluar = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Prueba Promedios - MidSquare");
+        setTitle("MidSquare");
 
         jLabel1.setText("Semilla");
 
@@ -136,14 +138,29 @@ public class PanelGeneradorMidSquare extends javax.swing.JInternalFrame {
                         JOptionPane.showMessageDialog(null, "Corriga el valor de la semilla para que sea un valor par");
                     }
                     break;
+                case 3:
+                    MSC = new MidSquare(Integer.parseInt(jTextFieldLimite.getText()));
+                    if (jTextFieldSemilla.getText().length() % 2 == 0) {
+                        MSC.setSemilla(jTextFieldSemilla.getText());
+                        PruebaChiCuadrado PCC = new PruebaChiCuadrado(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
+                        MSC.control();
+                        convertirResultados(MSC.getResultados());
+                        PCC.control(resultados);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Corriga el valor de la semilla para que sea un valor par");
+                    }
+                    break;
             }
         }
     }//GEN-LAST:event_jButtonEvaluarActionPerformed
 
     private void convertirResultados(String[] valores) {
         resultados = new double[valores.length];
-        for (String valore : valores) {
-            resultados[0] = Double.parseDouble(valore);
+        String valore;
+        for (int i = 0; i < valores.length; i++) {
+            valore = valores[i];
+            valore = valore.replaceAll(",", ".");
+            resultados[i] = Double.parseDouble(valore);
         }
     }
 

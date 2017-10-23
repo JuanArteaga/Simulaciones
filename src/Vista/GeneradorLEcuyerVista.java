@@ -61,6 +61,7 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItemVarianza = new javax.swing.JMenuItem();
+        jMenuItemChiCuadrado = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -257,6 +258,14 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItemVarianza);
 
+        jMenuItemChiCuadrado.setText("Chi  Cuadrado");
+        jMenuItemChiCuadrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemChiCuadradoActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItemChiCuadrado);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -373,6 +382,12 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
         PV.setVisible(true);
     }//GEN-LAST:event_jMenuItemVarianzaActionPerformed
 
+    private void jMenuItemChiCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemChiCuadradoActionPerformed
+        PruebaChiCuadradoVista PCCV=new PruebaChiCuadradoVista();
+        this.setVisible(false);
+        PCCV.setVisible(true);
+    }//GEN-LAST:event_jMenuItemChiCuadradoActionPerformed
+
     private void limpiarTabla() {
         DefaultTableModel modelo = (DefaultTableModel) jTableResultados.getModel();
         modelo.setRowCount(0);
@@ -452,6 +467,7 @@ public class GeneradorLEcuyerVista extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuInicio;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemArea;
+    private javax.swing.JMenuItem jMenuItemChiCuadrado;
     private javax.swing.JMenuItem jMenuItemFibonacci;
     private javax.swing.JMenuItem jMenuItemGeneradorBasico;
     private javax.swing.JMenuItem jMenuItemLEcuyer;
