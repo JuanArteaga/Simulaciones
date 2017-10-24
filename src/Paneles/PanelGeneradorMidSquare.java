@@ -7,9 +7,11 @@ package Paneles;
 
 import Controladores.MidSquare;
 import Controladores.PruebaChiCuadrado;
+import Controladores.PruebaKolmogorovSmirnov;
 import Controladores.PruebaPromedios;
 import Controladores.PruebaVarianza;
 import Vista.PruebaChiCuadradoVista;
+import Vista.PruebaKolmogorovSmirnovVista;
 import javax.swing.JOptionPane;
 
 /**
@@ -146,6 +148,18 @@ public class PanelGeneradorMidSquare extends javax.swing.JInternalFrame {
                         MSC.control();
                         convertirResultados(MSC.getResultados());
                         PCC.control(resultados);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Corriga el valor de la semilla para que sea un valor par");
+                    }
+                    break;
+                case 4:
+                    MSC = new MidSquare(Integer.parseInt(jTextFieldLimite.getText()));
+                    if (jTextFieldSemilla.getText().length() % 2 == 0) {
+                        MSC.setSemilla(jTextFieldSemilla.getText());
+                        PruebaKolmogorovSmirnov PKS = new PruebaKolmogorovSmirnov(Integer.parseInt(PruebaKolmogorovSmirnovVista.jComboBoxGrupos.getSelectedItem().toString()));
+                        MSC.control();
+                        convertirResultados(MSC.getResultados());
+                        PKS.control(resultados);
                     } else {
                         JOptionPane.showMessageDialog(null, "Corriga el valor de la semilla para que sea un valor par");
                     }

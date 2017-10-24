@@ -17,7 +17,7 @@ public class TablaChiCuadrado {
     public static Map<Double, Double> tabla = new HashMap<Double, Double>();
 
     public static void cargarTabla() {
-        		tabla.put(1.995, 0.00);
+        tabla.put(1.995, 0.00);
         tabla.put(1.990, 0.00);
         tabla.put(1.975, 0.00);
         tabla.put(1.950, 0.00);

@@ -60,6 +60,7 @@ public class MidSquareVista extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItemVarianza = new javax.swing.JMenuItem();
         jMenuItemChiCuadrado = new javax.swing.JMenuItem();
+        jMenuItemKolmogorov = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -250,6 +251,14 @@ public class MidSquareVista extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItemChiCuadrado);
 
+        jMenuItemKolmogorov.setText("Kolmogorov Smirnov");
+        jMenuItemKolmogorov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemKolmogorovActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItemKolmogorov);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -367,6 +376,12 @@ public class MidSquareVista extends javax.swing.JFrame {
         this.setVisible(false);
         PCCV.setVisible(true);
     }//GEN-LAST:event_jMenuItemChiCuadradoActionPerformed
+
+    private void jMenuItemKolmogorovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemKolmogorovActionPerformed
+        PruebaKolmogorovSmirnovVista PKSV = new PruebaKolmogorovSmirnovVista();
+        this.setVisible(false);
+        PKSV.setVisible(true);
+    }//GEN-LAST:event_jMenuItemKolmogorovActionPerformed
     
     private boolean revisarCampos() {
         String cadena = "Por favor ingrese un dato en los siguientes campos:\n\n";
@@ -438,6 +453,7 @@ public class MidSquareVista extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemChiCuadrado;
     private javax.swing.JMenuItem jMenuItemFibonacci;
     private javax.swing.JMenuItem jMenuItemGeneradorBasico;
+    private javax.swing.JMenuItem jMenuItemKolmogorov;
     private javax.swing.JMenuItem jMenuItemLEcuyer;
     private javax.swing.JMenuItem jMenuItemLineales;
     private javax.swing.JMenuItem jMenuItemMidSquare;

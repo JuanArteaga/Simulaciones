@@ -87,8 +87,6 @@ public class PruebaChiCuadrado {
     private void contar(double[] resultados) {
         for (int i = 0; i < resultados.length; i++) {
             for (int j = 0; j < intervalos[0].length; j++) {
-                double aux = intervalos[0][j];
-                double aux1 = intervalos[1][j];
                 if (intervalos[0][j] < resultados[i] && resultados[i] < intervalos[1][j]) {
                     frecuenciaObservada[j] = frecuenciaObservada[j] + 1;
                     j = intervalos[0].length;

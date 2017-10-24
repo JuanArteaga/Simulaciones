@@ -126,6 +126,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemChiCuadradoActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemKolmogorov">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Kolmogorov Smirnov"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemKolmogorovActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
@@ -265,7 +273,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Grupos"/>
+            <Property name="text" type="java.lang.String" value="Intervalos"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxGrupos">

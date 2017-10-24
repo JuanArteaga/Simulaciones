@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controladores.PruebaKolmogorovSmirnov;
 import Paneles.*;
 import javax.swing.JOptionPane;
 
@@ -12,17 +13,14 @@ import javax.swing.JOptionPane;
  *
  * @author usuario
  */
-public class PruebaChiCuadradoVista extends javax.swing.JFrame {
+public class PruebaKolmogorovSmirnovVista extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PruebaChiCuadradoVista
-     */
-    public int prueba = 3;
+    public int prueba=4;
     
-    public PruebaChiCuadradoVista() {
+    public PruebaKolmogorovSmirnovVista() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setTitle("SIMULACIONES - NRC: 8092 \\ Prueba Chi Cuadrado");
+        this.setTitle("SIMULACIONES - NRC: 8092 \\ Prueba Kolmogorov Smirnov");
     }
 
     /**
@@ -85,7 +83,7 @@ public class PruebaChiCuadradoVista extends javax.swing.JFrame {
 
         jLabel5.setText("Intervalos");
 
-        jComboBoxGrupos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"}));
+        jComboBoxGrupos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "1","2","3","4","5","6","7","8","9","10"}));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -383,11 +381,17 @@ public class PruebaChiCuadradoVista extends javax.swing.JFrame {
         PVV.setVisible(true);
     }//GEN-LAST:event_jMenuItemVarianzaActionPerformed
 
+    private void jMenuItemChiCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemChiCuadradoActionPerformed
+        PruebaChiCuadradoVista PCCV=new PruebaChiCuadradoVista();
+        this.setVisible(false);
+        PCCV.setVisible(true);
+    }//GEN-LAST:event_jMenuItemChiCuadradoActionPerformed
+
     private void jComboBoxGeneradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxGeneradorActionPerformed
         if (jTextFieldAceptacion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese un valor de aceptacion");
         } else if (jComboBoxGrupos.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Escoja un número de grupos");            
+            JOptionPane.showMessageDialog(null, "Escoja un número de grupos");
         } else {
             switch (jComboBoxGenerador.getSelectedIndex()) {
                 case 1:
@@ -436,14 +440,8 @@ public class PruebaChiCuadradoVista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBoxGeneradorActionPerformed
 
-    private void jMenuItemChiCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemChiCuadradoActionPerformed
-        JOptionPane.showMessageDialog(null, "Usted ya se encuentra en esta ventana");
-    }//GEN-LAST:event_jMenuItemChiCuadradoActionPerformed
-
     private void jMenuItemKolmogorovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemKolmogorovActionPerformed
-        PruebaKolmogorovSmirnovVista PKSV = new PruebaKolmogorovSmirnovVista();
-        this.setVisible(false);
-        PKSV.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Usted ya se encuentra en esta pantalla");
     }//GEN-LAST:event_jMenuItemKolmogorovActionPerformed
 
     /**
@@ -463,20 +461,20 @@ public class PruebaChiCuadradoVista extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PruebaChiCuadradoVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaKolmogorovSmirnovVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PruebaChiCuadradoVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaKolmogorovSmirnovVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PruebaChiCuadradoVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaKolmogorovSmirnovVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PruebaChiCuadradoVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaKolmogorovSmirnovVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PruebaChiCuadradoVista().setVisible(true);
+                new PruebaKolmogorovSmirnovVista().setVisible(true);
             }
         });
     }
