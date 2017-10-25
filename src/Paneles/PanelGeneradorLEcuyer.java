@@ -7,6 +7,7 @@ package Paneles;
 
 import Controladores.GeneradorLEcuyer;
 import Controladores.PruebaChiCuadrado;
+import Controladores.PruebaKolmogorovSmirnov;
 import Controladores.PruebaPromedios;
 import Controladores.PruebaVarianza;
 import Vista.PruebaChiCuadradoVista;
@@ -152,6 +153,15 @@ public class PanelGeneradorLEcuyer extends javax.swing.JInternalFrame {
                     GLE.Control();
                     PruebaChiCuadrado PCC = new PruebaChiCuadrado(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
                     PCC.control(GLE.getResultados());
+                    break;
+                case 4:
+                    semillaX = Integer.parseInt(jTextFieldValorX.getText());
+                    semillaY = Integer.parseInt(jTextFieldValorY.getText());
+                    limite = Integer.parseInt(jTextFieldLimite.getText());
+                    GLE = new GeneradorLEcuyer(semillaX, semillaY, limite);
+                    GLE.Control();
+                    PruebaKolmogorovSmirnov PKS = new PruebaKolmogorovSmirnov(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
+                    PKS.control(GLE.getResultados());
                     break;
             }
         }

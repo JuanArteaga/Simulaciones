@@ -157,14 +157,14 @@ public class PanelGeneradorBasico extends javax.swing.JInternalFrame {
                     PruebaChiCuadrado PCC = new PruebaChiCuadrado(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
                     PCC.control(GB.getFuncionSalida());
                     break;
-//                case 4:
-//                    GB = new GeneradorBasico(Integer.parseInt(jTextFieldLimite.getText()));
-//                    GB.setEcuacionSalida(jTextFieldFuncionSalida.getText());
-//                    GB.setEcuacionTransicion(jTextFieldFuncionTransicion.getText());
-//                    GB.controlGeneradorBasico(Integer.parseInt(jTextFieldSemilla.getText()));
-//                    PruebaKolmogorovSmirnov PKS=new PruebaKolmogorovSmirnov(Integer.parseInt(PruebaKolmogorovSmirnovVista.jComboBoxGrupos.getSelectedItem().toString()));
-//                    PKS.Control(GB.getFuncionSalida());
-//                    break;
+                case 4:
+                    GB = new GeneradorBasico(Integer.parseInt(jTextFieldLimite.getText()));
+                    GB.setEcuacionSalida(jTextFieldFuncionSalida.getText());
+                    GB.setEcuacionTransicion(jTextFieldFuncionTransicion.getText());
+                    GB.controlGeneradorBasico(Integer.parseInt(jTextFieldSemilla.getText()));
+                    PruebaKolmogorovSmirnov PKS=new PruebaKolmogorovSmirnov(Integer.parseInt(PruebaKolmogorovSmirnovVista.jComboBoxGrupos.getSelectedItem().toString()));
+                    PKS.control(GB.getFuncionSalida());
+                    break;
             }
         }
     }//GEN-LAST:event_jButtonEvaluarActionPerformed

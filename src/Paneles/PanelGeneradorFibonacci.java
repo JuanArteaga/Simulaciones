@@ -7,6 +7,7 @@ package Paneles;
 
 import Controladores.Fibonacci;
 import Controladores.PruebaChiCuadrado;
+import Controladores.PruebaKolmogorovSmirnov;
 import Controladores.PruebaPromedios;
 import Controladores.PruebaVarianza;
 import Vista.PruebaChiCuadradoVista;
@@ -167,6 +168,12 @@ public class PanelGeneradorFibonacci extends javax.swing.JInternalFrame {
                     F.Control(Integer.parseInt(jTextFieldNumero1.getText()), Integer.parseInt(jTextFieldNumero2.getText()));
                     PruebaChiCuadrado PCC = new PruebaChiCuadrado(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
                     PCC.control(F.getResultados());
+                    break;
+                case 4:
+                    F = new Fibonacci(Integer.parseInt(jTextFieldLimite.getText()), Integer.parseInt(jTextFieldValorM.getText()), jComboBoxOperacion.getSelectedIndex());
+                    F.Control(Integer.parseInt(jTextFieldNumero1.getText()), Integer.parseInt(jTextFieldNumero2.getText()));
+                    PruebaKolmogorovSmirnov PKS = new PruebaKolmogorovSmirnov(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
+                    PKS.control(F.getResultados());
                     break;
             }
         }

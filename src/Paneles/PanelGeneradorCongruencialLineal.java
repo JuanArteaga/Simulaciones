@@ -7,6 +7,7 @@ package Paneles;
 
 import Controladores.CongruencialesLineales;
 import Controladores.PruebaChiCuadrado;
+import Controladores.PruebaKolmogorovSmirnov;
 import Controladores.PruebaPromedios;
 import Controladores.PruebaVarianza;
 import Vista.PruebaChiCuadradoVista;
@@ -180,6 +181,17 @@ public class PanelGeneradorCongruencialLineal extends javax.swing.JInternalFrame
                     CL.Control();
                     PruebaChiCuadrado PCC = new PruebaChiCuadrado(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
                     PCC.control(CL.getResultados());
+                    break;
+                case 4:
+                    semilla = Integer.parseInt(jTextFieldSemilla.getText());
+                    limite = Integer.parseInt(jTextFieldLimite.getText());
+                    valorA = Integer.parseInt(jTextFieldValorA.getText());
+                    valorB = Integer.parseInt(jTextFieldValorB.getText());
+                    valorM = Integer.parseInt(jTextFieldValorM.getText());
+                    CL = new CongruencialesLineales(semilla, limite, valorA, valorB, valorM);
+                    CL.Control();
+                    PruebaKolmogorovSmirnov PKS = new PruebaKolmogorovSmirnov(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
+                    PKS.control(CL.getResultados());
                     break;
             }
         }

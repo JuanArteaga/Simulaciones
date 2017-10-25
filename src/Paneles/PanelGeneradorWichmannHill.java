@@ -6,6 +6,7 @@
 package Paneles;
 
 import Controladores.PruebaChiCuadrado;
+import Controladores.PruebaKolmogorovSmirnov;
 import Controladores.PruebaPromedios;
 import Controladores.PruebaVarianza;
 import Controladores.WichmannHill;
@@ -173,6 +174,16 @@ public class PanelGeneradorWichmannHill extends javax.swing.JInternalFrame {
                     WH.Control();
                     PruebaChiCuadrado PCC = new PruebaChiCuadrado(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
                     PCC.control(WH.getResultados());
+                    break;
+                case 4:
+                    semillaX = Integer.parseInt(jTextFieldValorX.getText());
+                    semillaY = Integer.parseInt(jTextFieldValorY.getText());
+                    semillaZ = Integer.parseInt(jTextFieldValorZ.getText());
+                    limite = Integer.parseInt(jTextFieldLimite.getText());
+                    WH = new WichmannHill(semillaX, semillaY, semillaZ, limite);
+                    WH.Control();
+                    PruebaKolmogorovSmirnov PKS = new PruebaKolmogorovSmirnov(Integer.parseInt(PruebaChiCuadradoVista.jComboBoxGrupos.getSelectedItem().toString()));
+                    PKS.control(WH.getResultados());
                     break;
             }
         }
