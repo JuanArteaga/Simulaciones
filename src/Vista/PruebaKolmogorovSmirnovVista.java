@@ -63,6 +63,8 @@ public class PruebaKolmogorovSmirnovVista extends javax.swing.JFrame {
         jMenuItemVarianza = new javax.swing.JMenuItem();
         jMenuItemChiCuadrado = new javax.swing.JMenuItem();
         jMenuItemKolmogorov = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItemCalcularPi = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -288,6 +290,18 @@ public class PruebaKolmogorovSmirnovVista extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenu5);
 
+        jMenu6.setText("Calcular PI");
+
+        jMenuItemCalcularPi.setText("Calcular Pi");
+        jMenuItemCalcularPi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCalcularPiActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItemCalcularPi);
+
+        jMenuBar2.add(jMenu6);
+
         setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -444,6 +458,12 @@ public class PruebaKolmogorovSmirnovVista extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Usted ya se encuentra en esta pantalla");
     }//GEN-LAST:event_jMenuItemKolmogorovActionPerformed
 
+    private void jMenuItemCalcularPiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCalcularPiActionPerformed
+        CalcularPiVista CP=new CalcularPiVista();
+        this.setVisible(false);
+        CP.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCalcularPiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -492,10 +512,12 @@ public class PruebaKolmogorovSmirnovVista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuInicio1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemArea;
+    private javax.swing.JMenuItem jMenuItemCalcularPi;
     private javax.swing.JMenuItem jMenuItemChiCuadrado;
     private javax.swing.JMenuItem jMenuItemFibonacci;
     private javax.swing.JMenuItem jMenuItemGeneradorBasico;

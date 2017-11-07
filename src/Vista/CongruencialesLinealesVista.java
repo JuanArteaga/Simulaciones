@@ -67,6 +67,8 @@ public class CongruencialesLinealesVista extends javax.swing.JFrame {
         jMenuItemVarianza = new javax.swing.JMenuItem();
         jMenuItemChiCuadrado = new javax.swing.JMenuItem();
         jMenuItemKolmogorov = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItemCalcularPi1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -303,6 +305,18 @@ public class CongruencialesLinealesVista extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu6.setText("Calcular PI");
+
+        jMenuItemCalcularPi1.setText("Calcular Pi");
+        jMenuItemCalcularPi1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCalcularPi1ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItemCalcularPi1);
+
+        jMenuBar1.add(jMenu6);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -429,6 +443,12 @@ public class CongruencialesLinealesVista extends javax.swing.JFrame {
         PKSV.setVisible(true);
     }//GEN-LAST:event_jMenuItemKolmogorovActionPerformed
 
+    private void jMenuItemCalcularPi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCalcularPi1ActionPerformed
+        CalcularPiVista CP=new CalcularPiVista();
+        this.setVisible(false);
+        CP.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCalcularPi1ActionPerformed
+
     private void limpiarTabla() {
         DefaultTableModel modelo = (DefaultTableModel) jTableResultados.getModel();
         modelo.setRowCount(0);
@@ -515,10 +535,14 @@ public class CongruencialesLinealesVista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuInicio;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemArea;
+    private javax.swing.JMenuItem jMenuItemCalcularPi;
+    private javax.swing.JMenuItem jMenuItemCalcularPi1;
     private javax.swing.JMenuItem jMenuItemChiCuadrado;
     private javax.swing.JMenuItem jMenuItemFibonacci;
     private javax.swing.JMenuItem jMenuItemGeneradorBasico;
